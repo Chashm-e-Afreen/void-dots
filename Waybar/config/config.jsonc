@@ -8,16 +8,12 @@
   "margin-right": 4,
   "modules-left": [
     "niri/workspaces",
-    "privacy",
     "niri/window"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
-    "pulseaudio",
-    "battery",
-    "network"
   ],
   "niri/workspaces": {
     "format": "{icon}",
@@ -27,10 +23,6 @@
       "dev": "",
       "games": "󰊖"
     }
-  },
-  "privacy": {
-    "icon-size": 12,
-    "icon-spacing": 0
   },
   "clock": {
     "format": "{:%a %H:%M}",
@@ -45,21 +37,4 @@
     "spacing": 4,
     "reverse-direction": true
   },
-  "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "format-muted": "  Muted",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ]
-  },
-  "network": {
-    "format-ethernet": "󰛳  Wired",
-    "format-wifi": "  {essid}",
-    "format-disconnected": "󰅛  Disconnected",
-    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}",
-    "tooltip-format-wifi": "{frequency}GHz {signalStrength}%\n\nInterface: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}",
-    "tooltip-format-disconnected": ""
-  }
 }
