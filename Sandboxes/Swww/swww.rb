@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
 xdg = ENV.fetch("XDG_RUNTIME_DIR") { abort "XDG_RUNTIME_DIR not set" }
-pwd = Dir.pwd
-home = ENV.fetch("HOME") { abort "HOME not set" }
+pwd = script_dir = __dir__
+home_dir = ENV.fetch("HOME") { abort "HOME not set" }
+
+sandboxed_home = "/home/appuser"
 
 args = [
   "bwrap",
@@ -16,11 +18,13 @@ args = [
   "--ro-bind", "/usr/bin/swww-daemon", "/usr/bin/swww-daemon",
   "--ro-bind", "/usr/bin/swww", "/usr/bin/swww",
   "--ro-bind", "/usr/bin/bash", "/usr/bin/bash",
-  "--ro-bind", "/usr/bin/sleep", "/usr/bin/sleep",
+  "--dev-bind", "/dev/null", "/dev/null",
   "--bind", xdg, xdg,
   "--ro-bind", File.join(pwd, "bg.jpg"), "/run/bg.jpg",
-  "--ro-bind", File.join(home, "Sandboxes", "Swww", "script.sh"), "/run/script.sh",
-  "bash", "/run/script.sh"
+  "--tmpfs", sandboxed_home,
+  "--setenv", "HOME", sandboxed_home,
+  "--bind", File.join(pwd, "cache"), File.join(sandboxed_home, ".cache", "swww"),
+  "swww-daemon", 
 ]
 
 system(*args)

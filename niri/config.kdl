@@ -76,7 +76,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-// output "DP-2" {
+output "DP-5" {
     // Uncomment this line to disable this output.
     // off
 
@@ -89,7 +89,7 @@ input {
     // mode "3840x2160@59.997"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    // scale 1
+    scale 2
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -105,7 +105,7 @@ input {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     // position x=1280 y=0
-// }
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -269,9 +269,10 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-spawn-at-startup "swww-daemon"
+spawn-at-startup "pipewire"
 spawn-sh-at-startup "gsettings set org.gnome.desktop.interface icon-theme Nordic-Darker"
+spawn-sh-at-startup "~/void-dots/Sandboxes/Waybar/sandbox_ironbar.rb"
+spawn-sh-at-startup "~/void-dots/Sandboxes/Swww/swww.rb"
 
 
 environment {

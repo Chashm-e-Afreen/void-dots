@@ -4,6 +4,7 @@ xdg = ENV.fetch("XDG_RUNTIME_DIR") { abort "XDG_RUNTIME_DIR not set" }
 niri = ENV.fetch("NIRI_SOCKET") { abort "NIRI_SOCKET not set" }
 wayland = ENV.fetch("WAYLAND_DISPLAY") { abort "WAYLAND_DISPLAY not set" }
 home = ENV.fetch("HOME") { abort "HOME not set" }
+pwd = script_dir = __dir__
 
 args = [
   "bwrap",
@@ -23,8 +24,8 @@ args = [
   "--ro-bind-try", "/var/lib/dbus/machine-id", "/var/lib/dbus/machine-id",
   "--dev-bind", "/dev/null", "/dev/null",
   "--tmpfs", "/tmp",
-  "--ro-bind", File.join(home, "Sandboxes", "Waybar", "passwd"), "/etc/passwd",
-  "--bind", File.join(home, "Sandboxes", "Waybar", "config"), File.join(home, ".config", "waybar"),
+  "--ro-bind", File.join(pwd, "passwd"), "/etc/passwd",
+  "--bind", File.join(pwd, "config"), File.join(home, ".config", "waybar"),
   "--unshare-all",
   "--unshare-user",
   "--unshare-net",
