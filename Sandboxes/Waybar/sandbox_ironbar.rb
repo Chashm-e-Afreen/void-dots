@@ -8,8 +8,7 @@ pwd = script_dir = __dir__
 
 args = [
   "bwrap",
-  "--ro-bind", "/usr/bin/dbus-send", "/usr/bin/dbus-send",
-  "--ro-bind", "/usr/bin/dbus-launch", "/usr/bin/dbus-launch",
+  "--ro-bind", "/usr/bin/dbus-run-session", "/usr/bin/dbus-run-session",
   "--ro-bind", "/usr/bin/dbus-daemon", "/usr/bin/dbus-daemon",
   "--ro-bind", "/usr/bin/waybar", "/usr/bin/waybar",
   "--ro-bind", "/usr/lib", "/usr/lib",
@@ -31,7 +30,7 @@ args = [
   "--unshare-net",
   "--unshare-pid",
   "--die-with-parent",
-  "dbus-launch", "waybar"
+  "dbus-run-session", "waybar"
 ]
 
 system(*args)
