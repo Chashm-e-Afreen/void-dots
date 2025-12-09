@@ -17,7 +17,7 @@ args = [
   "--symlink", "/usr/lib", "/usr/lib64",
   "--ro-bind", "/usr/share/dbus-1", "/usr/share/dbus-1",
   "--ro-bind", "/usr/share/X11/xkb", "/usr/share/X11/xkb",
-  "--ro-bind", File.join(home, "Sandboxes", "Waybar", "fonts"), "/usr/share/fonts",
+  "--ro-bind", File.join(pwd, "fonts"), "/usr/share/fonts",
   "--ro-bind", "/bin/sh", "/bin/sh",
   "--ro-bind", niri, niri,
   "--ro-bind", "#{xdg}/#{wayland}", "#{xdg}/#{wayland}",
