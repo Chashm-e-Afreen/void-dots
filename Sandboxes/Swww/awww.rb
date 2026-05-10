@@ -27,8 +27,5 @@ args = [
   "--setenv", "HOME", sandboxed_home,
   "--dir", "#{sandboxed_home}/.cache/awww",
   "/usr/bin/sh", "-c", "awww-daemon & sleep 0.2 && awww img /run/bg.jpg && wait"
- #"/usr/bin/awww", "img", File.join(sandboxed_home, "bg.jpg"),
- #"/usr/bin/awww-daemon",
- #"/usr/bin/sh", "-c", "awww-daemon & sleep 0.2 && awww img /run/bg.jpg && wait"
 ]
 system(*args)
